@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EduSecundaria</title>
+  <style>
+    :root{
+      --primary:#0072ff; --secondary:#00c6ff; --accent:#00a86b; --bg:#f5f7fa; --dark:#222; --card:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:#333;font-family:"Segoe UI",Tahoma,Geneva,Verdana,sans-serif;line-height:1.6}
+    a{color:inherit}
+    /* Header / Hero */
+    header.hero{background:linear-gradient(135deg,var(--secondary),var(--primary));color:#fff;text-align:center;padding:56px 16px}
+    header.hero h1{margin:0;font-size:clamp(28px,5vw,44px)}
+    header.hero p{margin:8px 0 0;font-size:clamp(14px,2.4vw,18px)}
+    /* Navbar */
+    nav.top{position:sticky;top:0;z-index:50;background:var(--dark);display:flex;gap:16px;justify-content:center;flex-wrap:wrap;padding:12px 10px}
+    nav.top a{color:#fff;text-decoration:none;font-weight:600;border-radius:999px;padding:8px 14px;transition:.2s}
+    nav.top a:hover{background:#fff1; color:var(--secondary)}
+    /* Grid cards */
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;padding:28px}
+    .card{background:var(--card);border-radius:18px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:22px;text-align:center;transition:.2s;cursor:pointer}
+    .card:hover{transform:translateY(-6px);box-shadow:0 14px 28px rgba(0,0,0,.14)}
+    .card img{width:76px;height:76px;object-fit:contain;margin-bottom:12px}
+    .card h3{margin:6px 0 8px;color:var(--primary)}
+    .btn{display:inline-block;background:var(--primary);color:#fff;border:none;border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;transition:.2s}
+    .btn:hover{filter:brightness(1.05)}
+    .btn.ghost{background:#0000;color:var(--primary);border:2px solid var(--primary)}
+    /* Sections */
+    section.section{max-width:1000px;margin:24px auto;background:#fff;border-radius:16px;box-shadow:0 10px 24px rgba(0,0,0,.08);padding:22px}
+    section.section h2{margin:0 0 10px;color:var(--primary)}
+    .pill{display:inline-block;background:linear-gradient(90deg,var(--secondary),var(--primary));color:#fff;padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700}
+    .topic{background:#f7fbff;border:1px solid #e5f1ff;border-radius:12px;padding:14px;margin:10px 0}
+    .topic h4{margin:0 0 6px}
+    .topic ul{margin:8px 0 0;padding-left:18px}
+    /* Quiz */
+    .quiz{margin-top:14px;background:#f0faff;border-radius:14px;padding:16px;border:1px solid #d8edff}
+    .quiz .q{font-weight:700;margin-bottom:10px}
+    .quiz .options{display:grid;gap:8px}
+    .quiz .options button{padding:10px;border:1px solid #cfe6ff;background:#fff;border-radius:10px;cursor:pointer;text-align:left}
+    .quiz .options button.correct{border-color:#15b86a;box-shadow:0 0 0 2px #15b86a22 inset}
+    .quiz .options button.wrong{border-color:#e75151;box-shadow:0 0 0 2px #e7515122 inset}
+    .quiz .footer{display:flex;gap:10px;align-items:center;margin-top:10px}
+    /* Registro */
+    .register{display:grid;gap:12px;max-width:520px}
+    .field{display:grid;gap:6px}
+    .field input, .field select{padding:12px;border:1px solid #ddd;border-radius:10px}
+    .success{background:#e9fff3;border:1px solid #c8f7df;color:#0d6b46;padding:10px 12px;border-radius:10px}
+    /* Footer */
+    footer{background:var(--dark);color:#fff;text-align:center;padding:18px;margin-top:26px}
+    /* Utilities */
+    .hidden{display:none}
+    .center{text-align:center}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <h1>📚 EduSecundaria</h1>
+    <p>Plataforma didáctica para estudiantes de 2.º de Secundaria (hispanohablantes)</p>
+  </header>
+
+  <nav class="top">
+    <a href="#inicio" data-link>Inicio</a>
+    <a href="#matematicas" data-link>Matemáticas</a>
+    <a href="#comunicacion" data-link>Comunicación</a>
+    <a href="#ingles" data-link>Inglés</a>
+    <a href="#ciencias" data-link>Ciencias & Tecnología</a>
+    <a href="#registro" data-link>Registro</a>
+  </nav>
+
+  <!-- ================= INICIO ================= -->
+  <main id="inicio" class="view">
+    <div class="grid">
+      <div class="card" data-goto="matematicas">
+        <img src="https://img.icons8.com/color/96/000000/math.png" alt="Matemáticas" />
+        <h3>Matemáticas</h3>
+        <p>Fracciones, álgebra básica y geometría con ejemplos claros.</p>
+        <button class="btn">Entrar</button>
+      </div>
+      <div class="card" data-goto="comunicacion">
+        <img src="https://img.icons8.com/color/96/000000/literature.png" alt="Comunicación" />
+        <h3>Comunicación</h3>
+        <p>Comprensión lectora, coherencia y ortografía práctica.</p>
+        <button class="btn">Entrar</button>
+      </div>
+      <div class="card" data-goto="ingles">
+        <img src="https://img.icons8.com/color/96/usa.png" alt="Inglés" />
+        <h3>Inglés</h3>
+        <p>Present Simple, vocabulario cotidiano y pequeñas lecturas.</p>
+        <button class="btn">Entrar</button>
+      </div>
+      <div class="card" data-goto="ciencias">
+        <img src="https://img.icons8.com/color/96/microscope.png" alt="Ciencias" />
+        <h3>Ciencias & Tecnología</h3>
+        <p>La célula, energía y método científico con actividades.</p>
+        <button class="btn">Entrar</button>
+      </div>
+    </div>
+
+    <section class="section center">
+      <span class="pill">Autodidacta</span>
+      <h2>Recursos útiles en español</h2>
+      <p>
+        Khan Academy (ES), Instituto Cervantes, Duolingo (ES), y canales educativos como Academia Play y Date un Vlog.
+      </p>
+      <div style="display:grid;gap:10px;max-width:780px;margin:14px auto">
+        <a class="btn ghost" target="_blank" href="https://es.khanacademy.org/">Khan Academy en español</a>
+        <a class="btn ghost" target="_blank" href="https://www.cervantes.es/">Instituto Cervantes</a>
+        <a class="btn ghost" target="_blank" href="https://es.duolingo.com/">Duolingo (ES)</a>
+        <a class="btn ghost" target="_blank" href="https://www.youtube.com/@academiaPlay">Academia Play</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= MATEMÁTICAS ================= -->
+  <main id="matematicas" class="view hidden">
+    <section class="section">
+      <span class="pill">Matemáticas – 2.º</span>
+      <h2>Fracciones equivalentes y simplificación</h2>
+      <div class="topic">
+        <h4>Idea clave</h4>
+        <p>Dos fracciones son equivalentes si representan la misma cantidad. Para <b>simplificar</b>, divide numerador y denominador por el mismo número (&gt;1).</p>
+        <p><b>Ejemplo:</b> 6/8 ÷ 2/2 = 3/4</p>
+      </div>
+      <div class="topic">
+        <h4>Practica guiada</h4>
+        <ul>
+          <li>Simplifica 12/18 → <i>6/9 → 2/3</i></li>
+          <li>¿Cuál es equivalente a 3/5? → 9/15 ✅</li>
+          <li>Completa: <i>__</i>/12 = 1/3 → 4/12</li>
+        </ul>
+      </div>
+      <div class="quiz" data-quiz="mates">
+        <div class="q"></div>
+        <div class="options"></div>
+        <div class="footer">
+          <button class="btn" data-next>Siguiente</button>
+          <div class="score"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Álgebra básica: expresiones y evaluación</h2>
+      <div class="topic">
+        <p>Evalúa la expresión <b>2x + 3</b> para x = 4 → 2(4)+3 = 11.</p>
+        <ul>
+          <li>Sustituye valores y opera respetando prioridad.</li>
+          <li>Recuerda: primero paréntesis, luego multiplicaciones/divisiones y al final sumas/restas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="center" style="padding:0 22px 22px">
+      <button class="btn ghost" data-goto="inicio">⬅ Volver al inicio</button>
+    </div>
+  </main>
+
+  <!-- ================= COMUNICACIÓN ================= -->
+  <main id="comunicacion" class="view hidden">
+    <section class="section">
+      <span class="pill">Comunicación – 2.º</span>
+      <h2>Comprensión lectora: idea principal y detalles</h2>
+      <div class="topic">
+        <p>La <b>idea principal</b> es el mensaje central. Los <b>detalles</b> apoyan esa idea.</p>
+        <p><b>Texto breve:</b> "El reciclaje reduce la basura y ahorra recursos naturales, por eso es clave en las ciudades".</p>
+        <ul>
+          <li>Idea principal: El reciclaje es importante para el ambiente urbano.</li>
+          <li>Detalle: Reduce basura y ahorra recursos.</li>
+        </ul>
+      </div>
+      <div class="topic">
+        <h4>Coherencia y cohesión</h4>
+        <p>Usa conectores: <i>porque, por eso, además, sin embargo</i> para unir ideas lógicamente.</p>
+      </div>
+      <div class="quiz" data-quiz="comu">
+        <div class="q"></div>
+        <div class="options"></div>
+        <div class="footer">
+          <button class="btn" data-next>Siguiente</button>
+          <div class="score"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="center" style="padding:0 22px 22px">
+      <button class="btn ghost" data-goto="inicio">⬅ Volver al inicio</button>
+    </div>
+  </main>
+
+  <!-- ================= INGLÉS ================= -->
+  <main id="ingles" class="view hidden">
+    <section class="section">
+      <span class="pill">Inglés – 2.º</span>
+      <h2>Present Simple (rutinas)</h2>
+      <div class="topic">
+        <p><b>Estructura:</b> Sujeto + verbo base (he/she/it: +<i>s</i>). Negación: <i>do/does not</i>.</p>
+        <ul>
+          <li>I <b>play</b> soccer every day.</li>
+          <li>She <b>plays</b> the guitar.</li>
+          <li>They <b>don’t</b> watch TV in the morning.</li>
+        </ul>
+      </div>
+      <div class="topic">
+        <h4>Vocabulario útil</h4>
+        <ul>
+          <li>always (siempre), usually (usualmente), sometimes (a veces), never (nunca)</li>
+          <li>to study (estudiar), to read (leer), to go (ir), to do homework (hacer tarea)</li>
+        </ul>
+      </div>
+      <div class="quiz" data-quiz="eng">
+        <div class="q"></div>
+        <div class="options"></div>
+        <div class="footer">
+          <button class="btn" data-next>Siguiente</button>
+          <div class="score"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="center" style="padding:0 22px 22px">
+      <button class="btn ghost" data-goto="inicio">⬅ Volver al inicio</button>
+    </div>
+  </main>
+
+  <!-- ================= CIENCIAS & TECNOLOGÍA ================= -->
+  <main id="ciencias" class="view hidden">
+    <section class="section">
+      <span class="pill">Ciencias & Tecnología – 2.º</span>
+      <h2>La célula: partes y tipos</h2>
+      <div class="topic">
+        <p>La célula es la unidad básica de la vida. 
+        <b>Eucariotas</b> (con núcleo) y <b>procariotas</b> (sin núcleo). Partes: membrana, citoplasma, material genético.</p>
+      </div>
+      <div class="topic">
+        <h4>Energía en los seres vivos</h4>
+        <p>Los alimentos aportan energía (kcal). La respiración celular transforma glucosa y oxígeno en energía (ATP).</p>
+      </div>
+      <div class="quiz" data-quiz="cie">
+        <div class="q"></div>
+        <div class="options"></div>
+        <div class="footer">
+          <button class="btn" data-next>Siguiente</button>
+          <div class="score"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="center" style="padding:0 22px 22px">
+      <button class="btn ghost" data-goto="inicio">⬅ Volver al inicio</button>
+    </div>
+  </main>
+
+  <!-- ================= REGISTRO ================= -->
+  <main id="registro" class="view hidden">
+    <section class="section">
+      <span class="pill">Registro</span>
+      <h2>Inscríbete como estudiante</h2>
+      <p>Completa tus datos para guardar tu registro en este dispositivo.</p>
+      <form class="register" id="formRegistro">
+        <div class="field">
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" type="text" placeholder="Ej. Ana Pérez" required />
+        </div>
+        <div class="field">
+          <label for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="tucorreo@gmail.com" required />
+        </div>
+        <div class="field">
+          <label for="grado">Grado</label>
+          <select id="grado" name="grado" required>
+            <option value="">Selecciona…</option>
+            <option>1.º de Secundaria</option>
+            <option selected>2.º de Secundaria</option>
+            <option>3.º de Secundaria</option>
+            <option>4.º de Secundaria</option>
+            <option>5.º de Secundaria</option>
+          </select>
+        </div>
+        <button class="btn" type="submit">Registrarme</button>
+        <div id="msg" class="success hidden">✅ ¡Registro guardado localmente!</div>
+      </form>
+
+      <div class="topic">
+        <h4>Registros guardados (solo en este navegador)</h4>
+        <ul id="listaRegistros" style="margin:0"></ul>
+      </div>
+    </section>
+
+    <div class="center" style="padding:0 22px 22px">
+      <button class="btn ghost" data-goto="inicio">⬅ Volver al inicio</button>
+    </div>
+  </main>
+
+  <footer>
+    © 2025 EduSecundaria – Plataforma de aprendizaje en español
+  </footer>
+
+  <script>
+    // ===== Navegación de una sola página (SPA simple) =====
+    const views = Array.from(document.querySelectorAll('.view'));
+    function show(id){
+      views.forEach(v=>v.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+      window.location.hash = id;
+      window.scrollTo({top:0,behavior:'smooth'});
+    }
+    // Enlaces del nav
+    document.querySelectorAll('[data-link]').forEach(a=>{
+      a.addEventListener('click',e=>{e.preventDefault();show(a.getAttribute('href').replace('#',''));});
+    });
+    // Tarjetas del inicio
+    document.querySelectorAll('[data-goto]').forEach(card=>{
+      card.addEventListener('click',()=>show(card.dataset.goto));
+    });
+    // Cargar vista desde hash si existe
+    if(location.hash){
+      const id = location.hash.replace('#','');
+      if(document.getElementById(id)) show(id);
+    }
+
+    // ===== Banco de quizzes por área =====
+    const QUIZZES = {
+      mates:[
+        {q:'¿Cuál ES equivalente a 6/8?', opts:['3/5','3/4','4/6'], ans:'3/4'},
+        {q:'Simplifica 12/18', opts:['2/3','4/9','6/12'], ans:'2/3'},
+        {q:'Evalúa 2x + 3 para x=4', opts:['9','10','11'], ans:'11'},
+      ],
+      comu:[
+        {q:'La idea principal de un texto es…', opts:['Un dato extra','El mensaje central','Una opinión del autor'], ans:'El mensaje central'},
+        {q:'Selecciona el conector ADECUADO: “Quiero estudiar; ___, practicaré más.”', opts:['sin embargo','por eso','aunque'], ans:'por eso'},
+        {q:'Ortografía correcta:', opts:['Aver si vienes','A ver si vienes','Haber si vienes'], ans:'A ver si vienes'},
+      ],
+      eng:[
+        {q:'Choose the correct sentence:', opts:['She play soccer','She plays soccer','She playing soccer'], ans:'She plays soccer'},
+        {q:'Present Simple for routines uses…', opts:['do/does','did','will'], ans:'do/does'},
+        {q:'Negative: “They ___ TV in the morning.”', opts:['doesn’t watch','don’t watch','not watch'], ans:'don’t watch'},
+      ],
+      cie:[
+        {q:'La unidad básica de la vida es…', opts:['El tejido','La célula','El órgano'], ans:'La célula'},
+        {q:'Procariotas se caracterizan por…', opts:['Tener núcleo','No tener núcleo','Tener mitocondrias complejas'], ans:'No tener núcleo'},
+        {q:'La respiración celular produce…', opts:['ADN','ATP','ARN'], ans:'ATP'},
+      ],
+    };
+
+    // ===== Inicializador de cada bloque .quiz =====
+    document.querySelectorAll('.quiz').forEach(initQuiz);
+    function initQuiz(box){
+      const key = box.dataset.quiz; // mates, comu, eng, cie
+      const data = QUIZZES[key];
+      let i = 0, score = 0, locked = false;
+      const qEl = box.querySelector('.q');
+      const optsEl = box.querySelector('.options');
+      const scoreEl = box.querySelector('.score');
+      const nextBtn = box.querySelector('[data-next]');
+
+      function render(){
+        locked = false;
+        const {q, opts} = data[i];
+        qEl.textContent = `Pregunta ${i+1}/${data.length}: ${q}`;
+        optsEl.innerHTML = '';
+        opts.forEach(op=>{
+          const b = document.createElement('button');
+          b.textContent = op;
+          b.addEventListener('click',()=>select(op,b));
+          optsEl.appendChild(b);
+        });
+        scoreEl.textContent = `Puntaje: ${score}`;
+      }
+      function select(op, btn){
+        if(locked) return; locked = true;
+        const correct = data[i].ans;
+        [...optsEl.children].forEach(b=>b.disabled=true);
+        btn.classList.add(op===correct? 'correct' : 'wrong');
+        if(op===correct) score++;
+        scoreEl.textContent = `Puntaje: ${score}`;
+      }
+      nextBtn.addEventListener('click',()=>{
+        i++;
+        if(i<data.length){ render(); }
+        else{
+          qEl.textContent = `¡Listo! Resultado: ${score}/${data.length}`;
+          optsEl.innerHTML = '';
+          nextBtn.disabled = true;
+        }
+      });
+      render();
+    }
+
+    // ===== Registro con localStorage =====
+    const form = document.getElementById('formRegistro');
+    const msg = document.getElementById('msg');
+    const lista = document.getElementById('listaRegistros');
+
+    function cargarRegistros(){
+      const arr = JSON.parse(localStorage.getItem('edu_registros')||'[]');
+      lista.innerHTML = arr.length? '' : '<li>No hay registros aún.</li>';
+      arr.forEach(r=>{
+        const li = document.createElement('li');
+        li.textContent = `${r.nombre} – ${r.email} – ${r.grado}`;
+        lista.appendChild(li);
+      });
+    }
+
+    form?.addEventListener('submit', e=>{
+      e.preventDefault();
+      const fd = new FormData(form);
+      const reg = {
+        nombre: fd.get('nombre').toString().trim(),
+        email: fd.get('email').toString().trim(),
+        grado: fd.get('grado').toString()
+      };
+      if(!reg.nombre || !reg.email || !reg.grado){return}
+      const arr = JSON.parse(localStorage.getItem('edu_registros')||'[]');
+      arr.push(reg);
+      localStorage.setItem('edu_registros', JSON.stringify(arr));
+      form.reset();
+      document.getElementById('grado').value = '2.º de Secundaria';
+      msg.classList.remove('hidden');
+      setTimeout(()=>msg.classList.add('hidden'), 1800);
+      cargarRegistros();
+    });
+
+    cargarRegistros();
+  </script>
+</body>
+</html>
